@@ -1,4 +1,5 @@
 #include <iostream>
+#include <math.h>
 using namespace std;
 
 /*Postujuci sve faze programiranja, napisati program koji korisniku omogucava
@@ -10,42 +11,48 @@ vrijednosti ispisati odgovarajucu poruku i ponoviti odabir.
 Za odabranu funkciju sin izraz je: f(x) = 1 + 1 / (sin(x)+x) + 2 / (sin (x/2) + x) + (...) x / (sin (x/x) + x) 
 */
 
-float unosx(){
-	float x;
-	cout << "Unesite realan broj x" << endl;
-	cin >> x;
-	return x;
+
+float unosBroja() {
+	float broj=0.0;
+	cout << "Unesite realan broj" << endl;
+	cin >> broj;
+	return broj;
 }
 
-char unos_znaka(){
-	char izbor;
-	do {
-		cout << "Unesite znak s ili c" << endl;
-		cin >> izbor;
-
-		if (izbor != 's' && izbor != 'c')
-			cout << "Unijeli ste nevazeci znak" << endl;
-
-	} while (izbor != 's' && izbor != 'c');
-	return izbor;
+char odabir() {
+	char slovo;
+	cout << "Unesite slovo s ili c" << endl;
+	do{
+		cin >> slovo;
+		if (slovo != 's' && slovo != 'c')
+		{
+			cout << "Odabir nije uredan. Unesite slovo s za funkciju sin ili c za funkciju cos" << endl;
+		}
+	} while (slovo != 's' && slovo != 'c');
+	return slovo;
 }
-
-float proracun(float x, char izbor) {
-	float rezultat = 1.0;
-	if (izbor == 's') {
-		for (int i = 1; i <= x; i++)
-			rezultat += i / (sin(x / i) + x);
+float rezultat(float broj, char slovo) {
+	float rjesenje = 0.0;
+	if (slovo == 's')
+	{
+		for (int i = 1; i <= broj; i++)
+		{
+			rjesenje += i / (sin(broj/i) + broj);
+		}
+		return rjesenje+1;
 	}
 	else {
-		for (int i = 1; i <= x; i++)
-			rezultat += i / (cos(x / i) + x);
+		for (int i = 1; i <= broj; i++)
+		{
+			rjesenje += i / (cos(broj / i) + broj);
+		}
+		return rjesenje + 1;
 	}
-	return rezultat;
+
 }
 
 int main() {
-	float x = unosx();
-	char izbor = unos_znaka();
-
-	cout << "Proracun datog izraza je " << proracun(x, izbor) << endl;
+	float broj = unosBroja();
+	char odabir1 = odabir();
+	cout << "Rezultat je " << rezultat(broj, odabir1);
 }
