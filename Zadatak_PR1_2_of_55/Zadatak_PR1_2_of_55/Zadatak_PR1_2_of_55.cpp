@@ -9,29 +9,29 @@ Rezultat trebi biti zaokruzen na dvije decimale.
 Geometrijska sredina n brojeva se racuna po formuli:
 (a1 * a2 * a3 * ... an)^1/n */
 
-int unos_broja();
-double geometrijska_sredina();
-
-int main{
-	unos_broja();
-	double geometrijska_sredina;
-
-	cin.get();
-	
+int unosBroja() {
+	int broj1;
+	cout << "Unesi cijeli broj" << endl;
+	cin >> broj1;
+	return broj1;
 }
 
-int unos broja{
-	int broj = 0;
-	cout << "Unesite broj: "
-	cin << broj;
-	return broj;
+double gSredina(int broj2) {
+	double broj3 = 1.0;
+	for (int i = 1; i <= broj2; i++)
+	{
+		if (i%2 != 0 && i%5 !=0)
+		{
+			broj3 *= i;
+				
+		}
+	}
+	broj3 = pow(broj3, 1/double (broj2));
+	return broj3;
 }
 
-double geometrijska_sredina{
-	GS = 0.0;
-	
-for (size_t i = 0; i < length; i++)
-{
-
-}
+int main() {
+	int broj = unosBroja();
+	double sredina = gSredina(broj);
+	cout << "Geometrijska sredina " << broj << " brojeva je " << setprecision(3) << sredina;
 }
