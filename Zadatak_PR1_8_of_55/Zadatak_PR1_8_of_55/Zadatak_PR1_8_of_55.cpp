@@ -7,18 +7,16 @@ Za olakšanje rješenja zadataka napraviti funkcije za obrtanje poretka cifara i z
 
 int unos() {
 	int broj;
-	do
-	{
+	do{
 		cout << "Unesite broj od 10 do 5000" << endl;
 		cin >> broj;
-	} while (broj<10 || broj>5000);
+	} while (broj < 10 || broj > 5000);
 	return broj;
 }
 
 int obrni(int broj) {
 	int novi=0;
-	while (broj > 0)
-	{
+	while (broj > 0){
 		int temp = broj % 10;
 		novi = novi * 10 + temp;
 		broj /= 10;
@@ -26,11 +24,10 @@ int obrni(int broj) {
 	return novi;
 }
 
-int suma(int broj){
+int suma(int broj) {
 	int suma = 0;
-	while (broj > 0)
-	{
-		int temp = broj % 10;
+	while (broj>0){
+		int temp = broj / 10;
 		suma += temp;
 		broj /= 10;
 	}
@@ -47,11 +44,13 @@ int main() {
 		x = y;
 		y = temp;
 	}
-	cout << "Brojevi od " << x << " do broja " << y << " za koje vazi da su njihovi obrnuti brojevi djeljivi sa sumom cifara su " << endl;
-	for (int i = x; i <= y; i++){
+
+	cout << "Brojevi od " << x << " do " << y << " ciji obrnuti brojevi su djeljivi sa njihovom sumom cifara su: " << endl;
+
+	for (int i = x; i <= y; i++)
+	{
 		if (obrni(i) % suma(i) == 0)
-		cout << i << endl;
+			cout << i << endl;
 	}
-	system("pause>0");
 	return 0;
 }
