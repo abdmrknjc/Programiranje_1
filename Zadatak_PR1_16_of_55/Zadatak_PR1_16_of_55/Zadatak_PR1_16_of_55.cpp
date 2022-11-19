@@ -17,8 +17,8 @@ int brojb(int);
 int main() {
 	int a = unosa();
 	int b = brojb(a);
-	cout << "Prvi broj je: " << a << ", " << "a drugi broj je: " << b << endl;
-	cout << "Razlika brojeva je: " << abs(a-b);
+	cout << "Prvi broj je: " << a << ", " << "a drugi je: " << b << endl;
+	cout << "Razlika brojeva je: " << abs(a - b) << endl;
 	return 0;
 }
 
@@ -28,7 +28,7 @@ int unosa() {
 	{
 		cout << "Unesite broj a (a>100000): " << endl;
 		cin >> a;
-	} while (a<100000);
+	} while (a<=100000);
 	return a;
 }
 
