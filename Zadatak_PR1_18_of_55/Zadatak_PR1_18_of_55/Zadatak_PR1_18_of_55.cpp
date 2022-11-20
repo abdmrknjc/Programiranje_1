@@ -9,53 +9,53 @@ Zatim prikazati sve parne brojeve u intervalu od n1 do n2 kao sumu dva prosta br
 (U glavnom programu samo unijeti navedena dva prirodna broja i pozvati funkciju koja obavlja zadani posao.)*/
 
 
-bool Prostbroj(int broj) {
-	if (broj <= 1)
-		return false;
-	
-	for (int i = 2; i < broj; i++)
-		if (broj % i == 0)
+bool prost(int broj) {
+	for (int i = 2; i < broj; i++){
+		if (broj % i == 0){
 			return false;
+		}
+	}
 	return true;
 }
 
 void Goldbach(int broj) {
-	for (int i = broj/2, j = broj/2; i <= broj; i++, j--)
+	for (int i = broj / 2,j = broj / 2; i <= broj; i++,j--)
 	{
-		if (Prostbroj(i) && Prostbroj(j))
+		if (prost(i)&&prost(j))
 		{
-		cout << broj << " = " << i << " + " << j << endl;
-		break;
+			cout << broj << " = " << i << " + " << j << endl;
+			break;
 		}
 	}
 }
 
-void pozivGoldbach(int n1, int n2) {
-	int temp;
-	if (n1>n2){
-		temp = n1;
+void pozivGoldbacha(int n1, int n2) {
+	if (n1>n2)
+	{
+		int temp = n1;
 		n1 = n2;
 		n2 = temp;
 	}
-	if (n1%2!=0){
+	if (n1%2!=0)
+	{
 		n1++;
 	}
-	for (int i = n1; i <= n2; i += 2){
+	for (int i = n1; i <= n2; i+=2)
+	{
 		Goldbach(i);
 	}
 }
 
 int main() {
-	int n1;
-	int n2;
+	int n1, n2;
 	do
 	{
-		cout << "Unesite prvi prirodan broj: " << endl;
+		cout << "Unesite prvi prirodan broj n1: " << endl;
 		cin >> n1;
-		cout << "Unesite drugi prirodni broj: " << endl;
+		cout << "Unesite drugi prirodan broj n2: " << endl;
 		cin >> n2;
 	} while (n1 <= 0 || n2 <= 0);
-	pozivGoldbach(n1,n2);
+	pozivGoldbacha(n1, n2);
 	system("pause>0");
 	return 0;
 }
